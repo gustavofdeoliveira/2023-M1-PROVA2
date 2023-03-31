@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogos eletronicos</title>
+    <style>
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+      .container,
+      .form {
+        border-collapse: collapse;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .button {
+        background-color: blue;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 20px;
+        width: 200px;
+        margin-top: 20px;
+      }
+      .table {
+        width: 100%;
+      }
+      .table td,
+      .table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #58d35d;
+        color: white;
+      }
+      label {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .input {
+        width: 250px;
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid #717171;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <form class="form" action="/add" method="post">
+        <label for="nome">Nome:</label>
+        <input class="input" type="text" id="nome" name="nome" /><br />
+        <label for="plataforma">Plataforma:</label>
+        <input
+          class="input"
+          type="text"
+          id="plataforma"
+          name="plataforma"
+        /><br />
+        <label for="preco">Preço:</label>
+        <input class="input" type="number" id="preco" name="preco" /><br />
+        <label for="quantidade">Quantidade:</label>
+        <input
+          class="input"
+          type="text"
+          id="quantidade"
+          name="quantidade"
+        /><br />
+        <input class="button" type="submit" value="Adicionar" />
+      </form>
+    </div>
+
+    <div class="container">
+      <h2>Lista de Jogos:</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Plataforma</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for game in games %}
+          <tr>
+            <td>{{game.nome}}</td>
+            <td>{{game.plataforma}}</td>
+            <td>R${{game.preco}}</td>
+            <td>{{game.quantidade}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
